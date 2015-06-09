@@ -1,6 +1,32 @@
 <ion-view view-title="{{params.city}}">
 	<ion-content>
-		<h3>Current Conditions</h3>
-		<p>{{forecast.currently.temperature | number:0}}&deg;</p>
+		<ion-scroll direction="y" paging="true" ng-style="{width: getWidth(), height: getHeight()}">
+			<div ng-style="{height: getTotalHeight()}">
+				<div class="scroll-page page1" ng-style="{width: getWidth(), height: getHeight()}">
+					<div class="bar bar-dark">
+						<h1 class="title">Current Conditions</h1>
+					</div>
+					<div class="has-header">
+						<h2 class="primary">
+							{{forecast.currently.temperature | number:0}}&deg;</h2>
+						<h2 class="secondary icon" ng-class="forecast.currently.icon | icons">
+						</h2>
+						<p>
+							{{forecast.currently.summary}}
+						</p>
+						<p>
+							High: {{forecast.daily.data[0].temperatureMax | number:0}}&deg; Low: {{forecast.daily.data[0].temperatureMin | number:0}}&deg; Feels Like: {{forecast.currently.apparentTemperature | number:0}}&deg;</p>
+						<p>
+							Wind: {{forecast.currently.windSpeed | number:0}}<span class="icon wind-icon ion-ios7-arrow-thin-up" ng-style="{transform: 'rotate(' + forecast.currently.windBearing + 'deg)'}"></span></p>
+					</div>	
+				</div>
+				<div class="scroll-page page2" ng-style="{width: getWidth(), height: getHeight()}">
+					Page 2
+				</div>
+				<div class="scroll-page page3" ng-style="{width: getWidth(), height: getHeight()}">
+					Page 3
+				</div>
+			</div>
+		</ion-scroll>
 	</ion-content>
 </ion-view>
